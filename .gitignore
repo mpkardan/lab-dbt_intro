@@ -1,0 +1,9 @@
+# IDE
+*.sw[mnop]
+
+# Python
+.venv/
+
+# DBT
+target/
+

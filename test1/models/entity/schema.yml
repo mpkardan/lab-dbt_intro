@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+    - name: full_address
+      description: "A denormalized Address"
+      columns: []
+          # - name: id
+          #   description: "The primary key for this table"
+          #   tests:
+          #       - unique
+          #       - not_null
