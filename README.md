@@ -25,3 +25,7 @@ I'll use the `sakila` sample DB in Postgres as provided [here](https://github.co
   - https://docs.getdbt.com/docs/building-a-dbt-project/package-management
   - install with `dbt deps`
   - package hub: https://hub.getdbt.com/
+- Redshift
+  - Native support for sortkey & distkey: https://docs.getdbt.com/reference/resource-configs/redshift-configs#using-sortkey-and-distkey
+  - A bunch of admin utils in dbt-labs/redshift package: https://hub.getdbt.com/dbt-labs/redshift/latest/
+
