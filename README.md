@@ -28,4 +28,27 @@ I'll use the `sakila` sample DB in Postgres as provided [here](https://github.co
 - Redshift
   - Native support for sortkey & distkey: https://docs.getdbt.com/reference/resource-configs/redshift-configs#using-sortkey-and-distkey
   - A bunch of admin utils in dbt-labs/redshift package: https://hub.getdbt.com/dbt-labs/redshift/latest/
-
+- Generated SQL returned in `target/`
+  - `target/compile/` holds the resolved models
+    - `dbt compile` to get it without running
+  - `target/run/` holds the SQL run against the dB
+- Update process
+  - Non-incremental
+    ```sql
+    BEGIN
+    CREATE TABLE table__dbt_tmp AS (SELECT ...)
+    ALTER TABLE table RENAME TO table__dbt_backup
+    ALTER TABLE table__dbt_tmp RENAME TO table
+    COMMIT
+    DROP TABLE table__dbt_backup
+    ```
+  - Incremental
+    ```sql
+    CREATE TABLE table__dbt_tmp123 AS (SELECT ... WHERE ...)
+    BEGIN
+    {compare schemas}
+    DELETE FROM table WHERE (unique_key) IN (SELECT unique_key FROM table__dbt_tmp123)
+    INSERT INTO table (...) (SELECT ... FROM table__dbt_tmp123)
+    COMMIT
+    ```
+    - NOTE: An added column won't get added until we run a `run --full-refresh`

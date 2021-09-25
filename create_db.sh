@@ -7,8 +7,8 @@ cd sakila/postgres-sakila-db
 
 pgrep postgres > /dev/null || pg_ctl -D /usr/local/var/postgres start
 
-psql -d postgres -c "DROP DATABASE sakila" || true
-psql -d postgres -c "DROP USER postgres" || true
+psql -d postgres -c "DROP DATABASE IF EXISTS sakila"
+psql -d postgres -c "DROP USER IF EXISTS postgres"
 psql -d postgres -c "CREATE USER postgres WITH SUPERUSER"
 psql -d postgres -c "CREATE DATABASE sakila WITH OWNER postgres"
 psql -U mark -d sakila -c "ALTER SCHEMA public OWNER TO postgres"

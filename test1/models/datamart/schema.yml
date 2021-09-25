@@ -28,3 +28,19 @@ models:
               - city
               - country
 
+    - name: comment_regions
+      description: "Attach the region of the commenter to all comments"
+      columns:
+        - name: customer_id
+          tests:
+            - not_null
+            - unique
+        - name: city
+          tests:
+            - not_null
+        - name: country
+          tests:
+            - not_null
+        - name: comment_count
+          tests:
+            - not_null
