@@ -28,3 +28,4 @@ models:
   test1:
       entity:
           materialized: table
+          schema: entity
