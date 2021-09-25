@@ -21,3 +21,7 @@ I'll use the `sakila` sample DB in Postgres as provided [here](https://github.co
 - 1-to-1 relation of table/view <-> model file
   - ref: https://stackoverflow.com/questions/63070763/create-multiple-tables-in-bigquery-using-dbt-for-loop
   - can create a macro to simplify creating similar models
+- packages
+  - https://docs.getdbt.com/docs/building-a-dbt-project/package-management
+  - install with `dbt deps`
+  - package hub: https://hub.getdbt.com/
