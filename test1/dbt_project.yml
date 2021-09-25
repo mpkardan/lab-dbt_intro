@@ -21,11 +21,14 @@ snapshot-paths: ["snapshots"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
-    - "target"
-    - "dbt_modules"
+  - "target"
+  - "dbt_modules"
 
 models:
   test1:
-      entity:
-          materialized: table
-          schema: entity
+    materialized: table
+    entity:
+      schema: entity
+    datamart:
+      schema: datamart
+

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+
+    - name: yearly_stats
+      description: "Aggregate stats by release year"
+      columns:
+        - name: release_year
+          description: "The release year"
+          tests:
+            - unique
+            - not_null
+
+    - name: customer_regions
+      description: "Aggregate stats of customers by region"
+      columns:
+        - name: country
+          description: "The country where the customers live"
+          tests:
+            - not_null
+        - name: city
+          description: "The city where the customers live"
+          tests:
+            - not_null
+      tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - city
+              - country
+
