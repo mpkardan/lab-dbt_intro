@@ -1,3 +1,7 @@
+
+
+{# THIS IS A TEST #}
+
 {{
   config(
     materialized="incremental",
